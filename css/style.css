@@ -60,12 +60,15 @@ nav{
     cursor: pointer;
     border: 1px solid black;
 }
-#menu-none{
+.menu-none{
     display: flex;
     flex-direction: column;
+}
+.exibir{
     display: none;
 }
-#menu-none a{
+
+.menu-none a{
     padding: 16px 8px;
     background-color: blue;
     border: 2px solid black;
@@ -76,7 +79,7 @@ nav{
     font-weight: 700;
     color: #fff;
 }
-#menu-none a:not(:last-child){
+.menu-none a:not(:last-child){
     border-bottom: 0px;
 }
 #img-loc{
@@ -94,10 +97,10 @@ nav{
     cursor: pointer;
     color: lightblue;
 }
-#menu:hover  #menu-none{
+#menu:hover  .menu-none{
     display: flex;
 }
-#menu-none a:hover{
+.menu-none a:hover{
     background-color: #6890F0;
     font-size: x-large;
 }
@@ -119,9 +122,6 @@ nav{
     color: lightblue;
     border-color: lightblue;
     font-size: x-large; 
-}
-.exibir{
-    display: flex;
 }
 
 
@@ -528,8 +528,9 @@ footer{
         font-size: medium;
     }
     .amostra-cards{
-        min-width: 38%;
-        max-width: 45%;
+        min-width: 30%;
+        max-width: 40%;
+        margin: 15px 10px;
     }
     #menu-direito{
         display: none;
@@ -538,31 +539,31 @@ footer{
         font-size: medium;
         margin-bottom: 0;
     }
-    #menu-none a{
+    .menu-none a{
         font-size: small;
     }
-    #menu:hover  #menu-none{
-        display: none;
+    main{
+        width: 100dvh;
+        padding: 0;
     }
 
 
     
     #slider{        
-        max-width: 100%;
+        max-width: 95dvh;
         height: 360px;
     }
     .imagem-slide{
-        width: 250px;
+        width: 300px;
     }
     h1{
         font-size: xx-large;
         padding: 10px 16px;
     }
     .slide-card{
-        width: 97dvh;
+        width: 100dvh;
         height: 220px;
     }
-
 
 
 
@@ -592,7 +593,7 @@ footer{
         max-width: 100%;
     }
     .habilidades{
-        font-size: small;
+        font-size: large;
         max-width: 200px;
         margin: 5px;
     }
@@ -600,5 +601,17 @@ footer{
         width: 50%;
         margin: 10px;
         font-size: medium;
+    }
+
+
+    #descricao{
+        display: none;
+    }
+    #descricao-text{
+        flex-wrap: wrap;
+    }
+    .descricao-text2{
+        width: 50%;
+        font-size: large;
     }
 }

@@ -14,7 +14,8 @@ $(document).ready(function(){
         document.getElementById(`radio${count}`).checked = true;
     };
 
-    const TAMANHO = 80;
+    // const TAMANHO = 80;
+    const TAMANHO = 4;
 
 
     addSlider();
@@ -307,6 +308,7 @@ $(document).ready(function(){
     // realizar busca por tipo apartir do evento de click no menu suspenso
     $('#menu-none a').click(function(){
         limparInput();
+        verifica
         
         let valor = $(this).html();
         valor = valor.toLowerCase();
@@ -316,6 +318,7 @@ $(document).ready(function(){
     // realizar buscas de urls
     $('#search').click(function(){
         let regiaoBusca = $('#busca').val();  
+        verifica();
 
         if(!regiaoBusca){
             alert('Nenhum valor foi inserido na pesquisa!');        
@@ -334,7 +337,16 @@ $(document).ready(function(){
     $('#menu').click( (evento) => {
         // alert('ll')
         let alternar = $(evento).find();
-        $("#menu-none").toggleClass('exibir');
+        // $("#menu-none").toggleClass('exibir'); 
+        $(".menu-none").toggleClass("exibir");
         console.log(alternar)
     })
+
+
+    function verifica(){
+        let veri = $(".menu-none").css("display");
+        if(veri == 'flex'){            
+            $(".menu-none").toggleClass("exibir");
+        };
+    }
 });

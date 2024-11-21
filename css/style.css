@@ -570,6 +570,7 @@ footer{
     .card-pokebola{
         margin-top: 10px;
         max-width: 700px;
+        justify-content: center;
     }
     #poke span{
         width: 10%;
@@ -583,12 +584,12 @@ footer{
         margin: 20px 0;
     }
     .pokebola{
-        max-width: 120px;
-        max-height: 120px;
-        margin: 20px;
+        max-width: 300px;
+        max-height: 300px;
+        margin: 20px 0 40px;
     }
     .poke-habilidades{
-        max-width: 60%;
+        max-width: 100%;
     }
     .habilidades{
         font-size: small;

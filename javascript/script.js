@@ -308,15 +308,25 @@ $(document).ready(function(){
     // realizar busca por tipo apartir do evento de click no menu suspenso
     $('#menu-none a').click(function(){
         limparInput();
-        verifica
+        verifica();
         
         let valor = $(this).html();
         valor = valor.toLowerCase();
         loadpkRegion(valor);
     });
     
+    $(document).keypress(function(event){
+        if(event.key === 'Enter'){
+            redirecionar();
+        }
+    })
+    
     // realizar buscas de urls
     $('#search').click(function(){
+        redirecionar();        
+    });
+    
+    function redirecionar() {
         let regiaoBusca = $('#busca').val();  
         verifica();
 
@@ -328,8 +338,7 @@ $(document).ready(function(){
             loadpkType();
             loadpkRegion();
         }
-    });
-
+    }
     // limpar o input
     $('#close').click(limparInput);   
 

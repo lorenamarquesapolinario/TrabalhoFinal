@@ -550,7 +550,7 @@ footer{
 
     
     #slider{        
-        max-width: 95dvh;
+        max-width: 100dvh;
         height: 360px;
     }
     .imagem-slide{
@@ -561,7 +561,7 @@ footer{
         padding: 10px 16px;
     }
     .slide-card{
-        width: 100dvh;
+        width: 95dvh;
         height: 220px;
     }
 
@@ -603,7 +603,9 @@ footer{
         font-size: medium;
     }
 
-
+    footer{
+        width: 100dvh;
+    }
     #descricao{
         display: none;
     }

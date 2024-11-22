@@ -14,7 +14,6 @@ $(document).ready(function(){
         document.getElementById(`radio${count}`).checked = true;
     };
 
-    // const TAMANHO = 80;
     const TAMANHO = 4;
 
 
@@ -109,28 +108,97 @@ $(document).ready(function(){
     }
     
 
+    let numero = 0;
 
     // função incial primeiro carregamento
-    async function carregar(){            
-        limparMain();
+    $(document).on('click', '#ver-mais', function(){
+        numero += 20;
 
-        for(let i=1; i<=TAMANHO; i++){
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+        carregarMais(numero);
 
-        await fetch(url)
-            .then((response) => {
-                return response.json();
+        async function carregarMais(paginacao) {
+            let inicio=20;
+            let intervalo=20;
+
+            if(paginacao>20){
+                inicio = paginacao;
+            }
+
+            let url = `https://pokeapi.co/api/v2/pokemon/?limit=${intervalo}&offset=${inicio}`;
+            
+            await fetch(url)
+            .then(async(response) => {
+                response = await response.json()
+                return response;
             })
             .then((data) => {
-                document.querySelector('main').innerHTML += criarCard(data);
+                console.log(data)
+                for(let i=0; i<data["results"].length; i++){
+                    let lista = data["results"][i]["name"];
+                    // console.log(lista)
+                    procurarPorIndice(lista);
+                };            
             })
             .catch((erro) => {
                 console.log("Erro: " + erro);
             })                     
-        };            
                 
+            document.querySelector("input").focus();
+        };
+        console.log(paginacao)
+    })
+    
+    
+
+
+    async function carregar(){  
+        limparMain();
+
+        let url = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0`;
+        
+        await fetch(url)
+        .then(async(response) => {
+            response = await response.json()
+            return response;
+        })
+        .then((data) => {
+            for(let i=0; i<data["results"].length; i++){
+                let lista = data["results"][i]["name"];
+                // console.log(lista)
+                procurarPorIndice(lista);
+            };            
+            $('#chamar-mais').html('<button id="ver-mais">Ver Mais</button>')
+        })
+        .catch((erro) => {
+            console.log("Erro: " + erro);
+        })                      
+            
         document.querySelector("input").focus();
     };
+
+
+
+
+    // async function carregar(){            
+    //     limparMain();
+
+    //     for(let i=1; i<=TAMANHO; i++){
+    //     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+
+    //     await fetch(url)
+    //         .then((response) => {
+    //             return response.json();
+    //         })
+    //         .then((data) => {
+    //             document.querySelector('main').innerHTML += criarCard(data);
+    //         })
+    //         .catch((erro) => {
+    //             console.log("Erro: " + erro);
+    //         })                     
+    //     };            
+                
+    //     document.querySelector("input").focus();
+    // };
 
 
     
@@ -193,6 +261,16 @@ $(document).ready(function(){
         'kalos': { comeco: 650, fim: 721 },
         'alola': { comeco: 722, fim: 809 },
         'galar': { comeco: 810, fim: 898 }
+
+
+        // 'kanto': { comeco: 1, fim: 151 },
+        // 'johto': { comeco: 152, fim: 251 },
+        // 'hoenn': { comeco: 252, fim: 386 },
+        // 'sinnoh': { comeco: 387, fim: 493 },
+        // 'unova': { comeco: 494, fim: 649 },
+        // 'kalos': { comeco: 650, fim: 721 },
+        // 'alola': { comeco: 722, fim: 809 },
+        // 'galar': { comeco: 810, fim: 898 }
 
     };
     // realizar busca da url por região e retorna os pokemons presentes na região
@@ -306,7 +384,7 @@ $(document).ready(function(){
     });
 
     // realizar busca por tipo apartir do evento de click no menu suspenso
-    $('#menu-none a').click(function(){
+    $('.menu-none a').click(function(){
         limparInput();
         verifica();
         
@@ -339,16 +417,15 @@ $(document).ready(function(){
             loadpkRegion();
         }
     }
+
     // limpar o input
     $('#close').click(limparInput);   
 
 
-    $('#menu').click( (evento) => {
+
+    $('#menu-departaments').click( () => {
         // alert('ll')
-        let alternar = $(evento).find();
-        // $("#menu-none").toggleClass('exibir'); 
         $(".menu-none").toggleClass("exibir");
-        console.log(alternar)
     })
 
 
@@ -356,6 +433,8 @@ $(document).ready(function(){
         let veri = $(".menu-none").css("display");
         if(veri == 'flex'){            
             $(".menu-none").toggleClass("exibir");
-        };
+        }
+
+        return;
     }
 });

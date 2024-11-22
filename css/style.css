@@ -9,7 +9,7 @@
 body{
     margin: 0;
     background-image: url("../img/fundo.jpg");
-    background-size: contain;
+    background-size: cover;
 }
 #global{
 margin: 0 auto;
@@ -205,6 +205,28 @@ h1{
 
 
 /*main*/
+#chamar-mais{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+#ver-mais{
+    font-size: xx-large;
+    background-color: red;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.435);
+    height: 80px;
+    padding: 18px 24px;
+    border-radius: 15px;
+}
+#ver-mais:hover{
+    background-color: rgba(255, 0, 0, 0.781);
+    border-color: white;
+    cursor: pointer;
+}
 main{
     padding: 30px;
     display: flex;

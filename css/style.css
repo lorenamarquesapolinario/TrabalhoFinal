@@ -146,7 +146,7 @@ nav{
     height: 300px;
     justify-content: space-around;
     padding: 10px;
-    width: 1400px;
+    width: 1280px;
     transition: 3s;
     z-index: -1;
 }
@@ -528,14 +528,15 @@ footer{
 
 
 
-@media (max-width: 1020px) {
+@media screen and (max-width: 1020px) {
     #global{
         margin: 0 auto;
-        width: 100%;
+        width: 100dvh;
     }
     #cabecalho{
-        width: 100%;
+        width: 100dvh;
         height: 60px;
+        position: absolute;
     }
     #busca{
         font-size: medium;
@@ -549,11 +550,6 @@ footer{
     #menu{
         font-size: medium;
     }
-    .amostra-cards{
-        min-width: 30%;
-        max-width: 40%;
-        margin: 15px 10px;
-    }
     #menu-direito{
         display: none;
     }
@@ -564,16 +560,11 @@ footer{
     .menu-none a{
         font-size: small;
     }
-    main{
-        width: 100dvh;
-        padding: 0;
-    }
 
-
-    
     #slider{        
-        max-width: 100dvh;
-        height: 360px;
+       width: 100dvh;
+        /* border: 5px solid; */
+        height: 340px;
     }
     .imagem-slide{
         width: 300px;
@@ -583,12 +574,22 @@ footer{
         padding: 10px 16px;
     }
     .slide-card{
-        width: 95dvh;
-        height: 220px;
+        width: 96.5dvh;
+        height: 200px;
     }
 
 
 
+    main{
+        width: 100dvh;
+        padding: 0;
+    }
+        
+    .amostra-cards{
+        min-width: 30%;
+        max-width: 40%;
+        margin: 15px 10px;
+    }              
 
     .card-pokebola{
         margin-top: 10px;
@@ -597,7 +598,6 @@ footer{
     }
     #poke span{
         width: 10%;
-        font-size: 40px;
         padding: 10px;
         margin: 0px;
     }
@@ -624,12 +624,9 @@ footer{
         margin: 10px;
         font-size: medium;
     }
-
-    footer{
-        width: 100dvh;
-    }
     #descricao{
         display: none;
+        width: 100%;
     }
     #descricao-text{
         flex-wrap: wrap;

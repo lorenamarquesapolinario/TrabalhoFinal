@@ -142,8 +142,6 @@ $(document).ready(function(){
             .catch((erro) => {
                 console.log("Erro: " + erro);
             })                     
-                
-            document.querySelector("input").focus();
         };
         console.log(paginacao)
     })
@@ -172,8 +170,6 @@ $(document).ready(function(){
         .catch((erro) => {
             console.log("Erro: " + erro);
         })                      
-            
-        document.querySelector("input").focus();
     };
 
 

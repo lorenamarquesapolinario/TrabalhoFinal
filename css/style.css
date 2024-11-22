@@ -528,7 +528,7 @@ footer{
 
 
 
-@media screen and (max-width: 1020px) {
+@media (min-width: 600px) and (max-width: 920px) {
     #global{
         margin: 0 auto;
         width: 100dvh;
@@ -562,8 +562,7 @@ footer{
     }
 
     #slider{        
-       width: 100dvh;
-        /* border: 5px solid; */
+        width: 100dvh;  
         height: 340px;
     }
     .imagem-slide{
@@ -577,20 +576,123 @@ footer{
         width: 96.5dvh;
         height: 200px;
     }
-
-
-
     main{
         width: 100dvh;
         padding: 0;
-    }
-        
+    }        
     .amostra-cards{
         min-width: 30%;
         max-width: 40%;
         margin: 15px 10px;
-    }              
+    }      
+    .card-pokebola{
+        margin-top: 10px;
+        max-width: 700px;
+        justify-content: center;
+    }
+    #poke span{
+        width: 10%;
+        padding: 10px;
+        margin: 0px;
+    }
+    .poke-descricao{
+        font-size: medium;
+        width: 80%;
+        margin: 20px 0;
+    }
+    .pokebola{
+        max-width: 300px;
+        max-height: 300px;
+        margin: 20px 0 40px;
+    }
+    .poke-habilidades{
+        max-width: 100%;
+    }
+    .habilidades{
+        font-size: large;
+        max-width: 200px;
+        margin: 5px;
+    }
+    .type{
+        width: 50%;
+        margin: 10px;
+        font-size: medium;
+    }
+    #descricao{
+        display: none;
+        width: 100%;
+    }
+    #descricao-text{
+        flex-wrap: wrap;
+    }
+    .descricao-text2{
+        width: 50%;
+        font-size: large;
+    }
+}
 
+
+
+
+
+
+@media (min-width: 300px) and (max-width: 599px) {
+    #global{
+        margin: 0 auto;
+        width: 100dvh;
+    }
+    #cabecalho{
+        width: 100dvh;
+        height: 60px;
+        position: absolute;
+    }
+    #busca{
+        font-size: medium;
+    }
+    #nav-icons{
+        margin: 10px;
+    }
+    nav{
+        height: 50px;
+    }
+    #menu{
+        font-size: medium;
+    }
+    #menu-direito{
+        display: none;
+    }
+    #menu-departaments{
+        font-size: medium;
+        margin-bottom: 0;
+    }
+    .menu-none a{
+        font-size: small;
+    }
+
+    #slider{        
+        width: 100dvh;  
+        height: 340px;
+    }
+    .imagem-slide{
+        width: 300px;
+    }
+    h1{
+        font-size: xx-large;
+        padding: 10px 16px;
+    }
+    .slide-card{
+        width: 96.5dvh;
+        height: 200px;
+    }
+    main{
+        width: 100dvh;
+        padding: 0;
+    }        
+    .amostra-cards{
+        min-width: 30%;
+        max-width: 40%;
+        margin: 15px 10px;
+    }      
     .card-pokebola{
         margin-top: 10px;
         max-width: 700px;

@@ -14,9 +14,6 @@ $(document).ready(function(){
         document.getElementById(`radio${count}`).checked = true;
     };
 
-    const TAMANHO = 4;
-
-
     addSlider();
     carregar();
 
@@ -79,6 +76,15 @@ $(document).ready(function(){
     function limparCardMaior(){
         $('#poke').empty();
     }
+    
+    // função para trasformar números em inteiros
+    function trasformInt(obj){
+        let numeroInt = obj.children[1].innerHTML;
+        numeroInt = numeroInt.replaceAll('N°', '');
+        numeroInt = parseInt(numeroInt);
+
+        return numeroInt;
+    }
 
     
 
@@ -108,95 +114,40 @@ $(document).ready(function(){
     }
     
 
-    let numero = 0;
-
+    
     // função incial primeiro carregamento
     $(document).on('click', '#ver-mais', function(){
-        numero += 20;
+        let ultimoCard = document.querySelector('main').lastChild;
+        ultimoCard = trasformInt(ultimoCard);
 
-        carregarMais(numero);
+        carregar(ultimoCard);
+    })    
 
-        async function carregarMais(paginacao) {
-            let inicio=20;
-            let intervalo=20;
+    async function carregar(paginacao) {
+        let inicio=0;
 
-            if(paginacao>20){
-                inicio = paginacao;
-            }
+        if(paginacao>=20){
+            inicio = paginacao;
+        }
 
-            let url = `https://pokeapi.co/api/v2/pokemon/?limit=${intervalo}&offset=${inicio}`;
-            
-            await fetch(url)
-            .then(async(response) => {
-                response = await response.json()
-                return response;
-            })
-            .then((data) => {
-                console.log(data)
-                for(let i=0; i<data["results"].length; i++){
-                    let lista = data["results"][i]["name"];
-                    // console.log(lista)
-                    procurarPorIndice(lista);
-                };            
-            })
-            .catch((erro) => {
-                console.log("Erro: " + erro);
-            })                     
-        };
-        console.log(paginacao)
-    })
-    
-    
-
-
-    async function carregar(){  
-        limparMain();
-
-        let url = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0`;
+        let url = `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${inicio}`;
         
         await fetch(url)
-        .then(async(response) => {
-            response = await response.json()
-            return response;
+        .then((response) => {
+            return response.json();
         })
         .then((data) => {
             for(let i=0; i<data["results"].length; i++){
                 let lista = data["results"][i]["name"];
-                // console.log(lista)
                 procurarPorIndice(lista);
             };            
-            $('#chamar-mais').html('<button id="ver-mais">Ver Mais</button>')
+            $('#chamar-mais').html('<button id="ver-mais">Ver Mais</button>');
         })
         .catch((erro) => {
             console.log("Erro: " + erro);
-        })                      
+        })                     
     };
-
-
-
-
-    // async function carregar(){            
-    //     limparMain();
-
-    //     for(let i=1; i<=TAMANHO; i++){
-    //     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-
-    //     await fetch(url)
-    //         .then((response) => {
-    //             return response.json();
-    //         })
-    //         .then((data) => {
-    //             document.querySelector('main').innerHTML += criarCard(data);
-    //         })
-    //         .catch((erro) => {
-    //             console.log("Erro: " + erro);
-    //         })                     
-    //     };            
-                
-    //     document.querySelector("input").focus();
-    // };
-
-
+    
     
     // realizar busca da url por tipo, nome ou região
     // realizar busca da url por nome e construir o card maior
@@ -232,10 +183,10 @@ $(document).ready(function(){
                     return response.json();
                 })
                 .then((data) => {
-
+                    
                     limparMain();
                     limparCardMaior();
-                    for(let i=1; i<=TAMANHO; i++){
+                    for(let i=1; i<=data["pokemon"].length; i++){
                         let carregarType = (data["pokemon"][i]["pokemon"]["name"]);
                         procurarPorIndice(carregarType);        
                     }
@@ -246,28 +197,16 @@ $(document).ready(function(){
     };
 
 
-
     // define inicio e fim de região
     const REGION = {
-        'kanto': { comeco: 1, fim: 101 },
+        'kanto': { comeco: 1, fim: 151 },
         'johto': { comeco: 152, fim: 251 },
-        'hoenn': { comeco: 252, fim: 352 },
-        'sinnoh': { comeco: 387, fim: 487 },
-        'unova': { comeco: 494, fim: 594 },
+        'hoenn': { comeco: 252, fim: 386 },
+        'sinnoh': { comeco: 387, fim: 493 },
+        'unova': { comeco: 494, fim: 649 },
         'kalos': { comeco: 650, fim: 721 },
         'alola': { comeco: 722, fim: 809 },
         'galar': { comeco: 810, fim: 898 }
-
-
-        // 'kanto': { comeco: 1, fim: 151 },
-        // 'johto': { comeco: 152, fim: 251 },
-        // 'hoenn': { comeco: 252, fim: 386 },
-        // 'sinnoh': { comeco: 387, fim: 493 },
-        // 'unova': { comeco: 494, fim: 649 },
-        // 'kalos': { comeco: 650, fim: 721 },
-        // 'alola': { comeco: 722, fim: 809 },
-        // 'galar': { comeco: 810, fim: 898 }
-
     };
     // realizar busca da url por região e retorna os pokemons presentes na região
     async function loadpkRegion(regian) {    
@@ -282,14 +221,12 @@ $(document).ready(function(){
         
         regiaoBusca = regiaoBusca.toLowerCase();
         let comeco = REGION[regiaoBusca].comeco;
-        let fim = REGION[regiaoBusca].fim;
 
         limparMain();
         limparCardMaior();
+        verifica();
 
-        for(let i=comeco; i <=fim; i++) {
-            await procurarPorIndice(i);
-        }
+        carregar(comeco);
     }
 
 
@@ -371,6 +308,7 @@ $(document).ready(function(){
                 console.log("Erro: " + erro);
             }) 
     })
+
 
 
 

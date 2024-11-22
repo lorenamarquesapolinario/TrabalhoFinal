@@ -531,7 +531,8 @@ footer{
 @media (min-width: 500px) and (max-width: 920px) {
     #global{
         margin: 0 auto;
-        max-width: 100dvh;
+        max-width: 90dvh;
+        margin: 0 5dvh;
     }
     #cabecalho{
         width: 100dvh;
@@ -636,7 +637,8 @@ footer{
 @media (min-width: 300px) and (max-width: 499px) {
     #global{
         margin: 0 auto;
-        max-width: 100dvh;
+        max-width: 90dvh;
+        margin: 0 5dvh;
     }
     #cabecalho{
         width: 100dvh;

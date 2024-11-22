@@ -534,7 +534,7 @@ footer{
         max-width: 100dvh;
     }
     #cabecalho{
-        max-width: 100dvh;
+        width: 100dvh;
         height: 60px;
         position: absolute;
     }
@@ -623,15 +623,14 @@ footer{
         width: 100%;
     }
     #descricao-text{
+        display: flex;
         flex-wrap: wrap;
     }
     .descricao-text2{
-        max-width: 50%;
+        width: 50%;
         font-size: large;
     }
 }
-
-
 
 
 @media (min-width: 300px) and (max-width: 499px) {
@@ -640,7 +639,7 @@ footer{
         max-width: 100dvh;
     }
     #cabecalho{
-        max-width: 100dvh;
+        width: 100dvh;
         height: 60px;
         position: absolute;
     }
@@ -729,10 +728,11 @@ footer{
         width: 100%;
     }
     #descricao-text{
+        display: flex;
         flex-wrap: wrap;
     }
     .descricao-text2{
-        max-width: 50%;
+        width: 50%;
         font-size: large;
     }
 }

@@ -569,14 +569,13 @@ footer{
         max-width: 400px;
     }
     #busca{
-        width: 80%;
+        width: 220px;
     }
     main{
         max-width: 400px;
     }
-    #menu-direito{
-        
-        /* display: none; */
+    #menu-direito{        
+        display: none;
     }
     .descricao-text2{
         width: 100%;

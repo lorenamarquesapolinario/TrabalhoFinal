@@ -480,7 +480,7 @@ main:has(.amostra-cards:hover) .amostra-cards:not(:hover){
 footer{
     background-color: red;
     padding: 20px 80px;
-    margin: 10px 0;
+    margin: 10px 0 0;
     color: white;
     font-weight: 600;
     letter-spacing: 2px;
@@ -526,6 +526,11 @@ footer{
 }
 .logo-footer{
     width: 20px;
+}
+#desenvolvedores{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
 }
 
 
@@ -581,7 +586,7 @@ footer{
         width: 200px;
         height: 200px;
     }
-    footer{
+    #descricao, #descricao-text{
         display: none;
     }
     #slider{
